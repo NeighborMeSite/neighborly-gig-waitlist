@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { CheckCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, AlertCircle, Mail, MapPin, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const WaitlistForm = () => {
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,7 @@ const WaitlistForm = () => {
       {!submitted ? (
         <>
           <div className="text-center mb-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Join our waitlist</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-1">Join our waitlist</h3>
             <p className="text-sm text-muted-foreground">
               Be the first to know when we launch in your area
             </p>
@@ -42,34 +43,56 @@ const WaitlistForm = () => {
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
+              <Label htmlFor="fullName">Full Name</Label>
+              <div className="relative">
+                <User className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="Your name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                  className="pl-10 bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                />
+              </div>
+            </div>
+            
+            <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
-              />
+              <div className="relative">
+                <Mail className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="pl-10 bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                />
+              </div>
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="zipCode">Zip Code</Label>
-              <Input
-                id="zipCode"
-                type="text"
-                placeholder="Enter your zip code"
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
-                required
-                className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
-              />
+              <div className="relative">
+                <MapPin className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <Input
+                  id="zipCode"
+                  type="text"
+                  placeholder="Enter your zip code"
+                  value={zipCode}
+                  onChange={(e) => setZipCode(e.target.value)}
+                  required
+                  className="pl-10 bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                />
+              </div>
             </div>
             
             <Button
               type="submit"
-              className="w-full bg-neighborly-600 hover:bg-neighborly-700 transition-all duration-300"
+              className="w-full bg-neighborly-600 hover:bg-neighborly-700 text-white transition-all duration-300"
               disabled={loading}
             >
               {loading ? "Joining..." : "Join Waitlist"}
