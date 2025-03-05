@@ -17,32 +17,32 @@ const HeroSection = ({
   setNeighborCount 
 }: HeroSectionProps) => {
   return (
-    <section className="pt-0 pb-1 md:pb-4 px-2 sm:px-4 relative" id="home">
+    <section className="min-h-[60vh] px-2 sm:px-4 relative" id="home">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-neighborly-50/50 -z-10"></div>
       
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 gap-0">
-          {/* Content side - further reduced height */}
+        <div className="grid grid-cols-1 gap-4">
+          {/* Content side */}
           <div className="max-h-52 overflow-hidden">
             <HeroContent neighborCount={neighborCount} />
           </div>
           
-          {/* Form side with neighborhood illustration as a horizontal bar */}
+          {/* Form side with neighborhood illustration */}
           {showWaitlist && (
-            <div className="w-full max-w-3xl mx-auto mt-0">
-              {/* Neighborhood illustration - horizontal bar with increased height */}
-              <div className="w-full rounded-xl overflow-hidden shadow-md mb-1">
-                <div className="relative aspect-[16/3.5] w-full">
+            <div className="w-full max-w-4xl mx-auto mt-4">
+              {/* Using a more flexible approach with fixed height */}
+              <div className="w-full mb-6 overflow-hidden rounded-xl shadow-lg">
+                <div className="h-64 w-full">
                   <img 
                     src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                     alt="Neighborhood illustration" 
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
               
-              {/* Form - centered below image */}
+              {/* Form */}
               <div className="w-full max-w-lg mx-auto">
                 <FormSection 
                   neighborCount={neighborCount} 

@@ -1,5 +1,6 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { Resend } from "npm:resend@2.0.0";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -11,21 +12,23 @@ interface MessageRequest {
 }
 
 const sendEmail = async (message: string) => {
-  // Using a simple email sending service
-  // For demo purposes, we'll log the message that would be sent
-  console.log(`Email would be sent to ahourmand90@gmail.com with message: ${message}`);
+  // Initialize Resend with API key
+  const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
   
-  // In a real implementation, you would use an email service like Resend, SendGrid, etc.
-  // For example with Resend:
-  // const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-  // await resend.emails.send({
-  //   from: "onboarding@yourdomain.com",
-  //   to: "ahourmand90@gmail.com", 
-  //   subject: "New message from NeighborMe website",
-  //   html: `<p>${message}</p>`,
-  // });
-  
-  return { success: true };
+  try {
+    const data = await resend.emails.send({
+      from: "NeighborMe <onboarding@resend.dev>",
+      to: "ahourmand90@gmail.com", 
+      subject: "New message from NeighborMe website",
+      html: `<p>${message}</p>`,
+    });
+    
+    console.log("Email successfully sent:", data);
+    return { success: true };
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
+  }
 };
 
 serve(async (req) => {

@@ -78,23 +78,13 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-8 md:gap-12 lg:gap-16">
+          <div>
             <div>
               <h3 className="font-medium mb-4">Company</h3>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li><a href="#" className="hover:text-neighborly-700 transition-colors">About</a></li>
                 <li><a href="#" className="hover:text-neighborly-700 transition-colors">Terms</a></li>
                 <li><a href="#" className="hover:text-neighborly-700 transition-colors">Privacy</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-medium mb-4">Connect</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">Facebook</a></li>
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">LinkedIn</a></li>
               </ul>
             </div>
           </div>
