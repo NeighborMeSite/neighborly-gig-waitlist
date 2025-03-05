@@ -17,7 +17,7 @@ const HeroSection = ({
   setNeighborCount 
 }: HeroSectionProps) => {
   return (
-    <section className="min-h-[60vh] px-2 sm:px-4 relative" id="home">
+    <section className="min-h-[60vh] px-2 sm:px-4 relative mt-4" id="home">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-neighborly-50/50 -z-10"></div>
       
@@ -33,7 +33,7 @@ const HeroSection = ({
             <div className="w-full max-w-4xl mx-auto mt-4">
               {/* Using a more flexible approach with fixed height */}
               <div className="w-full mb-6 overflow-hidden rounded-xl shadow-lg">
-                <div className="h-64 w-full">
+                <div className="h-80 sm:h-96 w-full">
                   <img 
                     src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                     alt="Neighborhood illustration" 
