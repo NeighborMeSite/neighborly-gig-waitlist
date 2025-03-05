@@ -29,10 +29,10 @@ const HeroSection = ({
           {/* Form side with neighborhood illustration */}
           <div className="relative">
             {showWaitlist && (
-              <div className="flex flex-col md:flex-row gap-6">
-                {/* Neighborhood illustration */}
-                <div className="hidden md:block md:w-1/2 h-full rounded-xl overflow-hidden shadow-md">
-                  <div className="relative aspect-[3/4] w-full h-full">
+              <div className="flex flex-col items-center gap-6">
+                {/* Neighborhood illustration - centered above form */}
+                <div className="w-full max-w-md rounded-xl overflow-hidden shadow-md mb-2">
+                  <div className="relative aspect-[4/3] w-full">
                     <img 
                       src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                       alt="Neighborhood illustration" 
@@ -41,8 +41,8 @@ const HeroSection = ({
                   </div>
                 </div>
                 
-                {/* Form */}
-                <div className="md:w-1/2 w-full">
+                {/* Form - centered below image */}
+                <div className="w-full max-w-md">
                   <FormSection 
                     neighborCount={neighborCount} 
                     setNeighborCount={setNeighborCount} 
