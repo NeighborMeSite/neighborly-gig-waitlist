@@ -42,10 +42,10 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar onOpenWaitlist={scrollToWaitlist} />
-      <div className="bg-neighborly-50 py-1 md:py-2 text-center mt-14 mb-0 px-2">
+      <div className="bg-neighborly-50 py-0.5 md:py-1 text-center mt-14 mb-0 px-2">
         <h2 className="text-neighborly-600 text-lg sm:text-xl md:text-2xl font-bold leading-tight">Welcome to NeighborMe</h2>
         <p className="text-gray-600 mt-0.5 italic text-xs md:text-sm px-1">Building stronger communities, one neighbor at a time</p>
-        <p className="text-sm mt-0.5 md:mt-1 pb-0.5">
+        <p className="text-sm pb-0.5">
           Already <span className="font-bold text-base md:text-lg text-neighborly-600">{neighborCount}</span> neighbors have joined the waitlist!
         </p>
       </div>

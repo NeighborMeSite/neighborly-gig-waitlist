@@ -22,9 +22,9 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-neighborly-50/50 -z-10"></div>
       
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 gap-1">
+        <div className="grid grid-cols-1 gap-0">
           {/* Content side - further reduced height */}
-          <div className="max-h-64 overflow-hidden">
+          <div className="max-h-52 overflow-hidden">
             <HeroContent neighborCount={neighborCount} />
           </div>
           
@@ -33,7 +33,7 @@ const HeroSection = ({
             <div className="w-full max-w-3xl mx-auto mt-0">
               {/* Neighborhood illustration - horizontal bar across the top */}
               <div className="w-full rounded-xl overflow-hidden shadow-md mb-1">
-                <div className="relative aspect-[16/3] w-full">
+                <div className="relative aspect-[16/2.5] w-full">
                   <img 
                     src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                     alt="Neighborhood illustration" 
