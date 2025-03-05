@@ -26,13 +26,27 @@ const HeroSection = ({
           {/* Content side */}
           <HeroContent neighborCount={neighborCount} />
           
-          {/* Form side */}
-          {showWaitlist && (
-            <FormSection 
-              neighborCount={neighborCount} 
-              setNeighborCount={setNeighborCount} 
-            />
-          )}
+          {/* Form side with neighborhood illustration */}
+          <div className="relative">
+            {showWaitlist && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                {/* Neighborhood illustration */}
+                <div className="hidden md:block rounded-xl overflow-hidden shadow-md">
+                  <img 
+                    src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
+                    alt="Neighborhood illustration" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                
+                {/* Form */}
+                <FormSection 
+                  neighborCount={neighborCount} 
+                  setNeighborCount={setNeighborCount} 
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
