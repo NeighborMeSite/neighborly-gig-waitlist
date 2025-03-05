@@ -6,9 +6,18 @@ import { Label } from '@/components/ui/label';
 import { MapPin, CheckCircle, AlertCircle, X, Users } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { AnimatedContainer } from './AnimatedElements';
+import { useMutation } from '@tanstack/react-query';
 
 interface WaitlistOverlayProps {
   onClose: () => void;
+}
+
+// Interface for our waitlist form data
+interface WaitlistFormData {
+  name: string;
+  email: string;
+  phone: string;
+  zipCode: string;
 }
 
 const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
@@ -16,24 +25,66 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+  // API submission function
+  const submitWaitlistData = async (data: WaitlistFormData) => {
+    // For demonstration, we'll log the data to console
+    console.log("Submitting waitlist data:", data);
     
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
+    // Simulate API call - in a real app, replace with actual API endpoint
+    const response = await fetch('https://api.neighborhoodapp.example/api/waitlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    // For demo purposes, we'll just simulate success
+    // In production, you would check response status and handle errors
+    if (!response.ok) {
+      throw new Error('Failed to join waitlist');
+    }
+    
+    return await response.json();
+  };
+
+  // Use React Query's useMutation hook to handle the submission
+  const mutation = useMutation({
+    mutationFn: submitWaitlistData,
+    onSuccess: () => {
       setSubmitted(true);
       toast({
         title: "You're on the list!",
         description: "We'll notify you when NeighborMe launches in your area.",
         variant: "default",
       });
-    }, 1500);
+    },
+    onError: (error) => {
+      console.error("Error submitting waitlist data:", error);
+      toast({
+        title: "Something went wrong",
+        description: "We couldn't add you to the waitlist. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create the data object to submit
+    const formData: WaitlistFormData = {
+      name,
+      email,
+      phone,
+      zipCode
+    };
+    
+    // Submit the data using the mutation
+    mutation.mutate(formData);
   };
 
   return (
@@ -133,9 +184,9 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                 <Button
                   type="submit"
                   className="w-full bg-neighborly-600 hover:bg-neighborly-700 transition-all duration-300"
-                  disabled={loading}
+                  disabled={mutation.isPending}
                 >
-                  {loading ? "Joining..." : "Join Waitlist"}
+                  {mutation.isPending ? "Joining..." : "Join Waitlist"}
                 </Button>
               </form>
               
