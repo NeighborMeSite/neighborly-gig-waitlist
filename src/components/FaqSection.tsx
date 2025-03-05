@@ -69,7 +69,7 @@ const FaqSection = () => {
           </p>
           <a 
             href="mailto:hello@neighborme.com" 
-            className="inline-flex items-center text-neighborly-700 hover:text-neighborly-800 font-medium"
+            className="inline-flex items-center text-neighborly-600 hover:text-neighborly-700 font-medium"
           >
             Contact Us
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

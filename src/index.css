@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,56 +15,56 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 258 94% 68%;
+    --primary: 142 76% 36%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 140 4.8% 95.9%;
+    --secondary-foreground: 140 5.9% 10%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 140 4.8% 95.9%;
+    --muted-foreground: 140 3.8% 46.1%;
 
-    --accent: 258 94% 92%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 142 76% 92%;
+    --accent-foreground: 140 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 258 94% 68%;
+    --border: 140 5.9% 90%;
+    --input: 140 5.9% 90%;
+    --ring: 142 76% 36%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 140 10% 3.9%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 3.9%;
+    --card: 140 10% 3.9%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 140 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 258 94% 68%;
+    --primary: 142 76% 36%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 140 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 140 3.7% 15.9%;
+    --muted-foreground: 140 5% 64.9%;
 
-    --accent: 258 94% 13%;
+    --accent: 142 76% 13%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 258 94% 68%;
+    --border: 140 3.7% 15.9%;
+    --input: 140 3.7% 15.9%;
+    --ring: 142 76% 36%;
   }
 }
 
@@ -86,6 +85,12 @@
   
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .neighborhood-bg {
+    background-image: url('https://images.unsplash.com/photo-1618164435735-413d3b066c9a?q=80&w=2070');
+    background-size: cover;
+    background-position: center;
   }
 }
 

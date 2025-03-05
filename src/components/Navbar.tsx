@@ -25,24 +25,24 @@ const Navbar = () => {
       <nav className="container mx-auto flex items-center justify-between">
         <AnimatedContainer animation="slide-down" delay={100}>
           <div className="flex items-center gap-2">
-            <MapPin className="text-neighborly-700 h-7 w-7" />
-            <span className="font-semibold text-xl tracking-tight">NeighborMe</span>
+            <MapPin className={`h-7 w-7 ${scrolled ? 'text-neighborly-600' : 'text-white'}`} />
+            <span className={`font-semibold text-xl tracking-tight ${scrolled ? 'text-black' : 'text-white'}`}>NeighborMe</span>
           </div>
         </AnimatedContainer>
         <AnimatedContainer animation="slide-down" delay={300}>
           <ul className="hidden md:flex items-center space-x-8">
             <li>
-              <a href="#features" className="text-sm font-medium hover:text-neighborly-600 transition-colors">
+              <a href="#features" className={`text-sm font-medium hover:text-neighborly-400 transition-colors ${scrolled ? 'text-gray-700' : 'text-white'}`}>
                 Features
               </a>
             </li>
             <li>
-              <a href="#how-it-works" className="text-sm font-medium hover:text-neighborly-600 transition-colors">
+              <a href="#how-it-works" className={`text-sm font-medium hover:text-neighborly-400 transition-colors ${scrolled ? 'text-gray-700' : 'text-white'}`}>
                 How It Works
               </a>
             </li>
             <li>
-              <a href="#faq" className="text-sm font-medium hover:text-neighborly-600 transition-colors">
+              <a href="#faq" className={`text-sm font-medium hover:text-neighborly-400 transition-colors ${scrolled ? 'text-gray-700' : 'text-white'}`}>
                 FAQ
               </a>
             </li>
@@ -51,7 +51,7 @@ const Navbar = () => {
         <AnimatedContainer animation="slide-down" delay={500}>
           <Button
             variant="default"
-            className="bg-neighborly-700 hover:bg-neighborly-800 transition-all duration-300"
+            className={`${scrolled ? 'bg-neighborly-600 hover:bg-neighborly-700' : 'bg-white text-neighborly-700 hover:bg-white/90'} transition-all duration-300`}
             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Join Waitlist

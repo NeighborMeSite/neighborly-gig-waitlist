@@ -37,7 +37,7 @@ const WaitlistForm = () => {
           {!submitted ? (
             <>
               <div className="text-center mb-8">
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-neighborly-700 mb-2">
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-neighborly-600 mb-2">
                   <MapPin className="h-4 w-4" />
                   Priority Access
                 </span>
@@ -76,7 +76,7 @@ const WaitlistForm = () => {
                 
                 <Button
                   type="submit"
-                  className="w-full bg-neighborly-700 hover:bg-neighborly-800 transition-all duration-300"
+                  className="w-full bg-neighborly-600 hover:bg-neighborly-700 transition-all duration-300"
                   disabled={loading}
                 >
                   {loading ? "Joining..." : "Join Waitlist"}
@@ -85,11 +85,11 @@ const WaitlistForm = () => {
               
               <div className="mt-6 text-center text-xs text-muted-foreground">
                 By joining, you agree to our{" "}
-                <a href="#" className="underline hover:text-neighborly-700 transition-colors">
+                <a href="#" className="underline hover:text-neighborly-600 transition-colors">
                   Terms
                 </a>{" "}
                 and{" "}
-                <a href="#" className="underline hover:text-neighborly-700 transition-colors">
+                <a href="#" className="underline hover:text-neighborly-600 transition-colors">
                   Privacy Policy
                 </a>
               </div>
@@ -97,7 +97,7 @@ const WaitlistForm = () => {
           ) : (
             <div className="text-center py-8">
               <div className="mx-auto w-16 h-16 bg-neighborly-100 rounded-full flex items-center justify-center mb-6">
-                <CheckCircle className="h-8 w-8 text-neighborly-700" />
+                <CheckCircle className="h-8 w-8 text-neighborly-600" />
               </div>
               <h2 className="text-2xl font-bold tracking-tight mb-2">You're on the list!</h2>
               <p className="text-muted-foreground text-sm mb-6">
@@ -105,7 +105,7 @@ const WaitlistForm = () => {
               </p>
               <div className="p-4 rounded-lg bg-neighborly-50 border border-neighborly-100">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-neighborly-700 mt-0.5" />
+                  <AlertCircle className="h-5 w-5 text-neighborly-600 mt-0.5" />
                   <div className="text-sm text-left">
                     <p className="font-medium text-neighborly-900">Want priority access?</p>
                     <p className="text-muted-foreground mt-1">
