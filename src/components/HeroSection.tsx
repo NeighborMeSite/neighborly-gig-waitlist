@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen px-4 flex flex-col items-center justify-center relative overflow-hidden pt-20 neighborhood-bg">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimatedContainer animation="slide-up" delay={200}>
