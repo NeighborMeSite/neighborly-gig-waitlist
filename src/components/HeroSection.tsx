@@ -17,7 +17,7 @@ const HeroSection = ({
   setNeighborCount 
 }: HeroSectionProps) => {
   return (
-    <section className="min-h-screen pt-24 pb-16 px-4 relative" id="home">
+    <section className="pt-8 pb-16 px-4 relative" id="home">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-neighborly-50/50 -z-10"></div>
       
