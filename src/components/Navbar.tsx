@@ -4,7 +4,11 @@ import { Button } from '@/components/ui/button';
 import { MapPin } from 'lucide-react';
 import { AnimatedContainer } from './AnimatedElements';
 
-const Navbar = () => {
+interface NavbarProps {
+  onOpenWaitlist: () => void;
+}
+
+const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -52,7 +56,7 @@ const Navbar = () => {
           <Button
             variant="default"
             className={`${scrolled ? 'bg-neighborly-600 hover:bg-neighborly-700' : 'bg-white text-neighborly-700 hover:bg-white/90'} transition-all duration-300`}
-            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={onOpenWaitlist}
           >
             Join Waitlist
           </Button>

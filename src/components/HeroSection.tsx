@@ -1,13 +1,13 @@
-
 import { Button } from '@/components/ui/button';
 import { Users, CheckCircle } from 'lucide-react';
 import { AnimatedContainer, FloatingElement } from './AnimatedElements';
-import WaitlistOverlay from './WaitlistOverlay';
-import { useState } from 'react';
 
-const HeroSection = () => {
-  const [showWaitlist, setShowWaitlist] = useState(true);
+interface HeroSectionProps {
+  showWaitlist: boolean;
+  setShowWaitlist: (show: boolean) => void;
+}
 
+const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
   return (
     <section className="min-h-screen px-4 flex flex-col items-center justify-center relative overflow-hidden pt-20 neighborhood-bg">
       {/* Light background overlay */}
@@ -86,9 +86,6 @@ const HeroSection = () => {
           </div>
         </FloatingElement>
       </div>
-
-      {/* Conditionally render the waitlist overlay */}
-      {showWaitlist && <WaitlistOverlay onClose={() => setShowWaitlist(false)} />}
     </section>
   );
 };
