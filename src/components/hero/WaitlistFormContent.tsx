@@ -5,32 +5,22 @@ import InputField from './InputField';
 import SkillsSelection from '../SkillsSelection';
 import FormHeader from './FormHeader';
 import FormFooter from './FormFooter';
+import { useFormContext } from '@/contexts/FormContext';
 
-interface WaitlistFormContentProps {
-  fullName: string;
-  setFullName: (value: string) => void;
-  email: string;
-  setEmail: (value: string) => void;
-  zipCode: string;
-  setZipCode: (value: string) => void;
-  selectedSkills: string[];
-  setSelectedSkills: (skills: string[]) => void;
-  loading: boolean;
-  handleSubmit: (e: React.FormEvent) => void;
-}
+const WaitlistFormContent = () => {
+  const {
+    fullName,
+    setFullName,
+    email,
+    setEmail,
+    zipCode,
+    setZipCode,
+    selectedSkills,
+    setSelectedSkills,
+    loading,
+    handleSubmit
+  } = useFormContext();
 
-const WaitlistFormContent = ({
-  fullName,
-  setFullName,
-  email,
-  setEmail,
-  zipCode,
-  setZipCode,
-  selectedSkills,
-  setSelectedSkills,
-  loading,
-  handleSubmit
-}: WaitlistFormContentProps) => {
   return (
     <>
       <FormHeader />
