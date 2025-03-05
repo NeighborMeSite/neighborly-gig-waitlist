@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 const Index = () => {
   const [showWaitlist, setShowWaitlist] = useState(true);
+  const [neighborCount, setNeighborCount] = useState(2450);
 
   const scrollToWaitlist = () => {
     document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
@@ -17,7 +18,12 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar onOpenWaitlist={scrollToWaitlist} />
       <main>
-        <HeroSection showWaitlist={showWaitlist} setShowWaitlist={setShowWaitlist} />
+        <HeroSection 
+          showWaitlist={showWaitlist} 
+          setShowWaitlist={setShowWaitlist} 
+          neighborCount={neighborCount}
+          setNeighborCount={setNeighborCount}
+        />
         <FeatureSection />
         <FaqSection />
       </main>

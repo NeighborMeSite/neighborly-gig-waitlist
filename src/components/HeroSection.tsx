@@ -6,17 +6,26 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, MapPin, User } from 'lucide-react';
+import { Mail, MapPin, User, UserPlus } from 'lucide-react';
+import SkillsSelection from './SkillsSelection';
 
 interface HeroSectionProps {
   showWaitlist: boolean;
   setShowWaitlist: (show: boolean) => void;
+  neighborCount: number;
+  setNeighborCount: (count: number) => void;
 }
 
-const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
+const HeroSection = ({ 
+  showWaitlist, 
+  setShowWaitlist, 
+  neighborCount, 
+  setNeighborCount 
+}: HeroSectionProps) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
@@ -29,6 +38,7 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
+      setNeighborCount(prev => prev + 1);
       toast({
         title: "You're on the list!",
         description: "We'll notify you when NeighborMe launches in your area.",
@@ -93,12 +103,25 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
               </div>
             </AnimatedContainer>
 
+            {/* Quote */}
+            <AnimatedContainer animation="slide-up" delay={850}>
+              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-neighborly-100 shadow-sm mt-4">
+                <blockquote className="italic text-gray-700 border-l-4 border-neighborly-300 pl-4">
+                  "NeighborMe transformed how I connect with my community. I found a neighbor who helps with my lawn while earning extra income doing what I love - teaching piano to kids in the area."
+                </blockquote>
+                <p className="text-right mt-2 text-sm font-medium text-neighborly-700">— Sarah T., Chicago</p>
+              </div>
+            </AnimatedContainer>
+
             {/* Community stats */}
             <AnimatedContainer animation="slide-up" delay={900}>
               <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-neighborly-100 shadow-sm">
                 <div className="flex items-center justify-between">
                   <div className="text-center">
-                    <h3 className="text-3xl font-bold text-neighborly-800">2,450+</h3>
+                    <div className="flex items-center justify-center text-neighborly-600 mb-1">
+                      <Users className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-neighborly-800">{neighborCount}+</h3>
                     <p className="text-sm text-gray-600">Neighbors joined</p>
                   </div>
                   <div className="text-center">
@@ -114,7 +137,7 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
             </AnimatedContainer>
           </div>
           
-          {/* Form side - completely rebuilt from scratch */}
+          {/* Form side */}
           <div className="relative mt-8 lg:mt-0">
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
               {!submitted ? (
@@ -175,6 +198,14 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
                       </div>
                     </div>
                     
+                    {/* Skills Selection */}
+                    <div className="space-y-2">
+                      <SkillsSelection
+                        selectedSkills={selectedSkills}
+                        onChange={setSelectedSkills}
+                      />
+                    </div>
+                    
                     <Button
                       type="submit"
                       className="w-full bg-neighborly-600 hover:bg-neighborly-700 text-white transition-all duration-300"
@@ -206,7 +237,7 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
                   </p>
                   <div className="p-4 rounded-lg bg-neighborly-50 border border-neighborly-100">
                     <div className="flex items-start gap-3">
-                      <Sparkles className="h-5 w-5 text-neighborly-600 mt-0.5" />
+                      <UserPlus className="h-5 w-5 text-neighborly-600 mt-0.5" />
                       <div className="text-sm text-left">
                         <p className="font-medium text-neighborly-900">Want priority access?</p>
                         <p className="text-muted-foreground mt-1">
@@ -218,7 +249,6 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
                             size="sm"
                             className="border-neighborly-200 hover:bg-neighborly-100 transition-all w-full"
                             onClick={() => {
-                              // Implement share functionality
                               toast({
                                 title: "Share link copied!",
                                 description: "Share this link with friends to move up the waitlist.",
