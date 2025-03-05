@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, Code, Brush, Users, TrendingUp, MessageCircle, Lightbulb, Rocket, Heart } from 'lucide-react';
+import { Check, Code, Brush, Users, TrendingUp, MessageCircle, Lightbulb, Rocket, Heart, Flower, Dumbbell, HardHat, Palette } from 'lucide-react';
 
 interface Skill {
   id: string;
@@ -23,6 +23,11 @@ const SkillsSelection: React.FC<SkillsSelectionProps> = ({ selectedSkills, onCha
     { id: 'creativity', name: 'Creativity', icon: <Lightbulb className="h-4 w-4" /> },
     { id: 'leadership', name: 'Leadership', icon: <Rocket className="h-4 w-4" /> },
     { id: 'caregiving', name: 'Caregiving', icon: <Heart className="h-4 w-4" /> },
+    // New skills
+    { id: 'landscaping', name: 'Landscaping', icon: <Flower className="h-4 w-4" /> },
+    { id: 'trainer', name: 'Trainer', icon: <Dumbbell className="h-4 w-4" /> },
+    { id: 'construction', name: 'Construction', icon: <HardHat className="h-4 w-4" /> },
+    { id: 'art', name: 'Art', icon: <Palette className="h-4 w-4" /> },
   ];
 
   const toggleSkill = (skillId: string) => {
