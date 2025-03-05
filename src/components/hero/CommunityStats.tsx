@@ -15,7 +15,7 @@ const CommunityStats = ({ neighborCount }: CommunityStatsProps) => {
             <div className="flex items-center justify-center text-neighborly-600 mb-1">
               <Users className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-neighborly-800">{neighborCount}+</h3>
+            <h3 className="text-3xl font-bold text-neighborly-800">{neighborCount}</h3>
             <p className="text-sm text-gray-600">Neighbors joined</p>
           </div>
           <div className="text-center">
