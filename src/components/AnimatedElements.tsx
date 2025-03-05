@@ -6,7 +6,7 @@ interface AnimatedContainerProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  animation?: 'fade-in' | 'slide-up' | 'slide-down' | 'slide-in-right';
+  animation?: 'fade-in' | 'slide-up' | 'slide-down' | 'slide-in-right' | 'scale-in';
 }
 
 export const AnimatedContainer = ({

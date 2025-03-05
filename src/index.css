@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -91,6 +92,22 @@
     background-image: url('https://images.unsplash.com/photo-1618164435735-413d3b066c9a?q=80&w=2070');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+  }
+
+  .scale-in {
+    animation: scaleIn 0.3s ease forwards;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 }
 

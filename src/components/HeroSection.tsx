@@ -2,11 +2,15 @@
 import { Button } from '@/components/ui/button';
 import { Users, CheckCircle } from 'lucide-react';
 import { AnimatedContainer, FloatingElement } from './AnimatedElements';
+import WaitlistOverlay from './WaitlistOverlay';
+import { useState } from 'react';
 
 const HeroSection = () => {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+
   return (
     <section className="min-h-screen px-4 flex flex-col items-center justify-center relative overflow-hidden pt-20 neighborhood-bg">
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimatedContainer animation="slide-up" delay={200}>
@@ -29,11 +33,11 @@ const HeroSection = () => {
         </AnimatedContainer>
         
         <AnimatedContainer animation="slide-up" delay={800}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 
               size="lg" 
               className="bg-neighborly-600 hover:bg-neighborly-700 transition-all duration-300"
-              onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setShowWaitlist(true)}
             >
               Join the Waitlist
             </Button>
@@ -70,27 +74,22 @@ const HeroSection = () => {
         </AnimatedContainer>
       </div>
       
-      <div className="absolute -bottom-10 md:bottom-5 left-1/2 transform -translate-x-1/2 w-full max-w-5xl">
+      {/* Floating community badge */}
+      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 w-full max-w-md">
         <FloatingElement>
-          <div className="glass-effect rounded-3xl p-6 md:p-10 shadow-xl mx-4">
-            <div className="flex items-center mb-4">
-              <Users className="h-6 w-6 text-neighborly-600 mr-2" />
-              <span className="text-sm font-medium text-neighborly-800">People are joining from all neighborhoods</span>
-            </div>
-            <div className="flex overflow-hidden">
-              <div className="flex animate-[slide_30s_linear_infinite]">
-                {[...Array(8)].map((_, i) => (
-                  <div key={i} className="flex-none mx-2">
-                    <div className="w-8 h-8 rounded-full bg-neighborly-200 flex items-center justify-center text-xs font-medium text-neighborly-800">
-                      {String.fromCharCode(65 + i)}
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="glass-effect rounded-3xl p-4 mx-4 shadow-lg">
+            <div className="flex items-center">
+              <Users className="h-5 w-5 text-neighborly-600 mr-2" />
+              <span className="text-sm font-medium text-neighborly-800">Join neighbors from across the country</span>
             </div>
           </div>
         </FloatingElement>
       </div>
+
+      {/* Waitlist overlay */}
+      {showWaitlist && (
+        <WaitlistOverlay onClose={() => setShowWaitlist(false)} />
+      )}
     </section>
   );
 };
