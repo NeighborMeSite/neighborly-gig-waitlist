@@ -67,12 +67,11 @@ const HeroSection = ({ showWaitlist, setShowWaitlist }: HeroSectionProps) => {
             </AnimatedContainer>
           </div>
           
-          {/* Form side with image in background */}
+          {/* Form side */}
           <div className="relative">
             <div className="absolute -top-10 -right-20 -z-10 opacity-20 w-96 h-96 rounded-full bg-neighborly-100 blur-3xl"></div>
             <AnimatedContainer animation="fade-in" delay={400}>
               <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Join our waitlist</h3>
                 <WaitlistForm />
               </div>
             </AnimatedContainer>

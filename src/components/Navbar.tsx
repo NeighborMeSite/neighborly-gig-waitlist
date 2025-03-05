@@ -56,7 +56,7 @@ const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
           <Button
             variant="default"
             className="bg-neighborly-600 hover:bg-neighborly-700 transition-all duration-300"
-            onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={onOpenWaitlist}
           >
             <Sparkles className="h-4 w-4 mr-2" />
             Join Waitlist
