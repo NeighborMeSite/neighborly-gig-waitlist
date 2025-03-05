@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const Index = () => {
   const [showWaitlist, setShowWaitlist] = useState(true);
-  const [neighborCount, setNeighborCount] = useState(2450);
+  const [neighborCount, setNeighborCount] = useState(0);
 
   const scrollToWaitlist = () => {
     document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });

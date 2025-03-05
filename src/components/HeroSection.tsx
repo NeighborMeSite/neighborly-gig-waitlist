@@ -4,10 +4,11 @@ import { Users, CheckCircle, Sparkles } from 'lucide-react';
 import { AnimatedContainer } from './AnimatedElements';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, MapPin, User, UserPlus } from 'lucide-react';
 import SkillsSelection from './SkillsSelection';
+import { supabase } from '@/integrations/supabase/client';
 
 interface HeroSectionProps {
   showWaitlist: boolean;
@@ -30,12 +31,58 @@ const HeroSection = ({
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Fetch the total waitlist count from Supabase on component mount
+  useEffect(() => {
+    const fetchWaitlistCount = async () => {
+      try {
+        const { count, error } = await supabase
+          .from('waitlist')
+          .select('*', { count: 'exact', head: true });
+        
+        if (error) {
+          console.error('Error fetching waitlist count:', error);
+          return;
+        }
+        
+        // If count is available, update the neighbor count
+        if (count !== null) {
+          setNeighborCount(count);
+        }
+      } catch (error) {
+        console.error('Error fetching waitlist count:', error);
+      }
+    };
+
+    fetchWaitlistCount();
+  }, [setNeighborCount]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Insert the user data into the waitlist table
+      const { error } = await supabase
+        .from('waitlist')
+        .insert({
+          name: fullName,
+          email: email,
+          zip_code: zipCode,
+          skills: selectedSkills.length > 0 ? selectedSkills : null
+        });
+
+      if (error) {
+        console.error('Error submitting to waitlist:', error);
+        toast({
+          title: "Submission failed",
+          description: "There was an error adding you to the waitlist. Please try again.",
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Successfully submitted
       setLoading(false);
       setSubmitted(true);
       setNeighborCount(prev => prev + 1);
@@ -44,7 +91,15 @@ const HeroSection = ({
         description: "We'll notify you when NeighborMe launches in your area.",
         variant: "default",
       });
-    }, 1500);
+    } catch (error) {
+      console.error('Error:', error);
+      setLoading(false);
+      toast({
+        title: "Submission failed",
+        description: "There was an error adding you to the waitlist. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
