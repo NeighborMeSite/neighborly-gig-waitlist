@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -41,7 +40,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
       
       <AnimatedContainer animation="scale-in" className="relative z-10 w-full max-w-md">
-        <div className="glass-effect rounded-3xl p-8 border border-neighborly-100 shadow-xl relative">
+        <div className="bg-white rounded-3xl p-8 border border-neighborly-100 shadow-xl relative">
           <button 
             onClick={onClose}
             className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
@@ -85,7 +84,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                    className="bg-white border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
                   />
                 </div>
                 
@@ -98,7 +97,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                    className="bg-white border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
                   />
                 </div>
                 
@@ -113,7 +112,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     placeholder="(555) 555-5555"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                    className="bg-white border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
                   />
                 </div>
                 
@@ -126,7 +125,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     value={zipCode}
                     onChange={(e) => setZipCode(e.target.value)}
                     required
-                    className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                    className="bg-white border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
                   />
                 </div>
                 

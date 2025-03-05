@@ -6,12 +6,12 @@ import WaitlistOverlay from './WaitlistOverlay';
 import { useState } from 'react';
 
 const HeroSection = () => {
-  // Set showWaitlist to true by default to ensure it appears on initial load
   const [showWaitlist, setShowWaitlist] = useState(true);
 
   return (
     <section className="min-h-screen px-4 flex flex-col items-center justify-center relative overflow-hidden pt-20 neighborhood-bg">
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
+      {/* Reduce background darkness and blur for better visibility */}
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-[0px]"></div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimatedContainer animation="slide-up" delay={200}>
@@ -87,10 +87,8 @@ const HeroSection = () => {
         </FloatingElement>
       </div>
 
-      {/* Waitlist overlay - ensure it's showing by default */}
-      {showWaitlist && (
-        <WaitlistOverlay onClose={() => setShowWaitlist(false)} />
-      )}
+      {/* Make sure the waitlist overlay is rendered */}
+      <WaitlistOverlay onClose={() => setShowWaitlist(false)} />
     </section>
   );
 };
