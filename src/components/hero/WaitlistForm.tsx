@@ -47,10 +47,28 @@ const WaitlistForm = ({ setNeighborCount }: WaitlistFormProps) => {
         return;
       }
 
+      // After successful submission, get the updated count
+      const { count, error: countError } = await supabase
+        .from('waitlist')
+        .select('*', { count: 'exact', head: true });
+        
+      if (!countError && count !== null) {
+        // Now we're passing a direct number value instead of a function
+        setNeighborCount(count);
+      } else {
+        // Fallback if we can't get the count: increment by 1
+        const { data: currentData } = await supabase
+          .from('waitlist')
+          .select('id');
+        
+        if (currentData) {
+          setNeighborCount(currentData.length);
+        }
+      }
+
       // Successfully submitted
       setLoading(false);
       setSubmitted(true);
-      setNeighborCount((prev: number) => prev + 1);
       toast({
         title: "You're on the list!",
         description: "We'll notify you when NeighborMe launches in your area.",
