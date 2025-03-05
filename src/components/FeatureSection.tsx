@@ -76,27 +76,6 @@ const FeatureSection = () => {
             </RevealOnScroll>
           ))}
         </div>
-        
-        <RevealOnScroll animation="fade-in" className="mt-16 p-8 rounded-3xl bg-neighborly-50 border border-neighborly-100">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="flex-1 text-center md:text-left mb-6 md:mb-0">
-              <h3 className="text-2xl font-bold tracking-tight mb-2">
-                Ready to transform your neighborhood?
-              </h3>
-              <p className="text-muted-foreground">
-                Join the waitlist today and be first to experience NeighborMe.
-              </p>
-            </div>
-            <div>
-              <button 
-                className="px-6 py-3 rounded-lg bg-neighborly-600 text-white font-medium hover:bg-neighborly-700 transition-all duration-300"
-                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Join the Waitlist
-              </button>
-            </div>
-          </div>
-        </RevealOnScroll>
       </div>
     </section>
   );
