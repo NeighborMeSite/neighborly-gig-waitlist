@@ -22,9 +22,9 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-neighborly-50/50 -z-10"></div>
       
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 gap-4">
-          {/* Content side */}
-          <div className="max-h-52 overflow-hidden">
+        <div className="grid grid-cols-1 gap-0">
+          {/* Content side - Removed max-height restriction */}
+          <div>
             <HeroContent neighborCount={neighborCount} />
           </div>
           
