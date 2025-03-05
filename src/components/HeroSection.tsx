@@ -3,9 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Users, CheckCircle } from 'lucide-react';
 import { AnimatedContainer, FloatingElement } from './AnimatedElements';
 import WaitlistOverlay from './WaitlistOverlay';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const HeroSection = () => {
+  // Set showWaitlist to true by default to ensure it appears on initial load
   const [showWaitlist, setShowWaitlist] = useState(true);
 
   return (
@@ -86,7 +87,7 @@ const HeroSection = () => {
         </FloatingElement>
       </div>
 
-      {/* Waitlist overlay - showing by default */}
+      {/* Waitlist overlay - ensure it's showing by default */}
       {showWaitlist && (
         <WaitlistOverlay onClose={() => setShowWaitlist(false)} />
       )}
