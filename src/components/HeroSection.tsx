@@ -22,35 +22,33 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-neighborly-50/50 -z-10"></div>
       
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 gap-10">
           {/* Content side */}
           <HeroContent neighborCount={neighborCount} />
           
-          {/* Form side with neighborhood illustration */}
-          <div className="relative flex justify-center items-center">
-            {showWaitlist && (
-              <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
-                {/* Neighborhood illustration - centered above form */}
-                <div className="w-full rounded-xl overflow-hidden shadow-md mb-6">
-                  <div className="relative aspect-[4/3] w-full">
-                    <img 
-                      src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
-                      alt="Neighborhood illustration" 
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                
-                {/* Form - centered below image */}
-                <div className="w-full">
-                  <FormSection 
-                    neighborCount={neighborCount} 
-                    setNeighborCount={setNeighborCount} 
+          {/* Form side with neighborhood illustration as a horizontal bar */}
+          {showWaitlist && (
+            <div className="w-full max-w-2xl mx-auto">
+              {/* Neighborhood illustration - horizontal bar across the top */}
+              <div className="w-full rounded-xl overflow-hidden shadow-md mb-6">
+                <div className="relative aspect-[16/5] w-full">
+                  <img 
+                    src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
+                    alt="Neighborhood illustration" 
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
               </div>
-            )}
-          </div>
+              
+              {/* Form - centered below image */}
+              <div className="w-full max-w-lg mx-auto">
+                <FormSection 
+                  neighborCount={neighborCount} 
+                  setNeighborCount={setNeighborCount} 
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
