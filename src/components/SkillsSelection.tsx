@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, Code, Brush, Users, TrendingUp, MessageCircle, LightBulb, Rocket, Heart } from 'lucide-react';
+import { Check, Code, Brush, Users, TrendingUp, MessageCircle, Lightbulb, Rocket, Heart } from 'lucide-react';
 
 interface Skill {
   id: string;
@@ -20,7 +20,7 @@ const SkillsSelection: React.FC<SkillsSelectionProps> = ({ selectedSkills, onCha
     { id: 'community', name: 'Community Building', icon: <Users className="h-4 w-4" /> },
     { id: 'business', name: 'Business', icon: <TrendingUp className="h-4 w-4" /> },
     { id: 'communication', name: 'Communication', icon: <MessageCircle className="h-4 w-4" /> },
-    { id: 'creativity', name: 'Creativity', icon: <LightBulb className="h-4 w-4" /> },
+    { id: 'creativity', name: 'Creativity', icon: <Lightbulb className="h-4 w-4" /> },
     { id: 'leadership', name: 'Leadership', icon: <Rocket className="h-4 w-4" /> },
     { id: 'caregiving', name: 'Caregiving', icon: <Heart className="h-4 w-4" /> },
   ];
