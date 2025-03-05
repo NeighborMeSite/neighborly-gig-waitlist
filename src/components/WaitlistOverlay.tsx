@@ -1,13 +1,14 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { MapPin, CheckCircle, AlertCircle, X, Users } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { AnimatedContainer } from './AnimatedElements';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { supabase } from "@/integrations/supabase/client";
+import SkillsSelection from './SkillsSelection';
 
 interface WaitlistOverlayProps {
   onClose: () => void;
@@ -19,6 +20,7 @@ interface WaitlistFormData {
   email: string;
   phone: string;
   zip_code: string;
+  skills?: string[];
 }
 
 const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
@@ -26,8 +28,29 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
+  
+  // Fetch waitlist count from Supabase
+  const waitlistCountQuery = useQuery({
+    queryKey: ['waitlistCount'],
+    queryFn: async () => {
+      const { count, error } = await supabase
+        .from('waitlist')
+        .select('*', { count: 'exact', head: true });
+      
+      if (error) {
+        console.error("Error fetching waitlist count:", error);
+        return 0;
+      }
+      
+      return count || 0;
+    }
+  });
+
+  // Display a fallback count if the query is loading or errored
+  const neighborCount = waitlistCountQuery.isSuccess ? waitlistCountQuery.data : 542;
 
   // Submit waitlist data to Supabase
   const submitWaitlistData = async (data: WaitlistFormData) => {
@@ -40,7 +63,8 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
         name: data.name,
         email: data.email,
         phone: data.phone,
-        zip_code: data.zip_code
+        zip_code: data.zip_code,
+        skills: data.skills
       })
       .select();
     
@@ -62,6 +86,9 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
         description: "We'll notify you when NeighborMe launches in your area.",
         variant: "default",
       });
+      
+      // Invalidate the waitlist count query to trigger a refetch
+      waitlistCountQuery.refetch();
     },
     onError: (error) => {
       console.error("Error submitting waitlist data:", error);
@@ -81,7 +108,8 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
       name,
       email,
       phone,
-      zip_code: zipCode
+      zip_code: zipCode,
+      skills: selectedSkills.length > 0 ? selectedSkills : undefined
     };
     
     // Submit the data using the mutation
@@ -121,7 +149,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     <Users className="h-4 w-4 text-neighborly-700" />
                   </div>
                   <div>
-                    <p className="font-medium text-sm">Join <span className="text-neighborly-700">542 neighbors</span> already on the waitlist</p>
+                    <p className="font-medium text-sm">Join <span className="text-neighborly-700">{neighborCount} neighbors</span> already on the waitlist</p>
                     <p className="text-xs text-muted-foreground">Limited spots available for early access</p>
                   </div>
                 </div>
@@ -179,6 +207,14 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     onChange={(e) => setZipCode(e.target.value)}
                     required
                     className="bg-white border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                  />
+                </div>
+                
+                {/* Skills Selection Component */}
+                <div className="pt-2">
+                  <SkillsSelection 
+                    selectedSkills={selectedSkills}
+                    onChange={setSelectedSkills}
                   />
                 </div>
                 
