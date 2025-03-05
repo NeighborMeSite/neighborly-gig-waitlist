@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { MapPin, CheckCircle, AlertCircle, X } from 'lucide-react';
+import { MapPin, CheckCircle, AlertCircle, X, Users } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { AnimatedContainer } from './AnimatedElements';
 
@@ -12,7 +12,9 @@ interface WaitlistOverlayProps {
 }
 
 const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -50,18 +52,43 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
           
           {!submitted ? (
             <>
-              <div className="text-center mb-8">
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-neighborly-600 mb-2">
+              <div className="text-center mb-6">
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-neighborly-600 mb-1">
                   <MapPin className="h-4 w-4" />
                   Priority Access
                 </span>
-                <h2 className="text-2xl font-bold tracking-tight mb-2">Join the Waitlist</h2>
+                <h2 className="text-2xl font-bold tracking-tight mb-2">Join our Waitlist</h2>
                 <p className="text-muted-foreground text-sm">
                   Be the first to know when NeighborMe launches in your neighborhood.
                 </p>
               </div>
               
+              <div className="bg-neighborly-50 border border-neighborly-100 rounded-lg p-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center bg-neighborly-100 rounded-full p-2">
+                    <Users className="h-4 w-4 text-neighborly-700" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-sm">Join <span className="text-neighborly-700">542 neighbors</span> already on the waitlist</p>
+                    <p className="text-xs text-muted-foreground">Limited spots available for early access</p>
+                  </div>
+                </div>
+              </div>
+              
               <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder="Your full name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                  />
+                </div>
+                
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
@@ -71,6 +98,21 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <span className="text-xs text-muted-foreground">(Optional)</span>
+                  </div>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="(555) 555-5555"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     className="bg-white/50 border-neighborly-100 focus:border-neighborly-300 focus:ring-2 focus:ring-neighborly-200 transition-all"
                   />
                 </div>
