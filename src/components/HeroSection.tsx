@@ -31,9 +31,9 @@ const HeroSection = ({
           {/* Form side with neighborhood illustration as a horizontal bar */}
           {showWaitlist && (
             <div className="w-full max-w-3xl mx-auto mt-0">
-              {/* Neighborhood illustration - horizontal bar across the top */}
+              {/* Neighborhood illustration - horizontal bar with increased height */}
               <div className="w-full rounded-xl overflow-hidden shadow-md mb-1">
-                <div className="relative aspect-[16/2.5] w-full">
+                <div className="relative aspect-[16/3.5] w-full">
                   <img 
                     src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                     alt="Neighborhood illustration" 
