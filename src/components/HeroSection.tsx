@@ -10,8 +10,8 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen px-4 flex flex-col items-center justify-center relative overflow-hidden pt-20 neighborhood-bg">
-      {/* Reduce background darkness and blur for better visibility */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[0px]"></div>
+      {/* Light background overlay */}
+      <div className="absolute inset-0 bg-black/10"></div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimatedContainer animation="slide-up" delay={200}>
@@ -87,8 +87,8 @@ const HeroSection = () => {
         </FloatingElement>
       </div>
 
-      {/* Make sure the waitlist overlay is rendered */}
-      <WaitlistOverlay onClose={() => setShowWaitlist(false)} />
+      {/* Conditionally render the waitlist overlay */}
+      {showWaitlist && <WaitlistOverlay onClose={() => setShowWaitlist(false)} />}
     </section>
   );
 };

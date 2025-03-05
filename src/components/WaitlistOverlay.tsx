@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -39,7 +40,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
       
-      <AnimatedContainer animation="scale-in" className="relative z-10 w-full max-w-md">
+      <div className="relative z-10 w-full max-w-md scale-in">
         <div className="bg-white rounded-3xl p-8 border border-neighborly-100 shadow-xl relative">
           <button 
             onClick={onClose}
@@ -189,7 +190,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
             </div>
           )}
         </div>
-      </AnimatedContainer>
+      </div>
     </div>
   );
 };
