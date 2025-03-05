@@ -7,6 +7,7 @@ import { MapPin, CheckCircle, AlertCircle, X, Users } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { AnimatedContainer } from './AnimatedElements';
 import { useMutation } from '@tanstack/react-query';
+import { supabase } from "@/integrations/supabase/client";
 
 interface WaitlistOverlayProps {
   onClose: () => void;
@@ -17,7 +18,7 @@ interface WaitlistFormData {
   name: string;
   email: string;
   phone: string;
-  zipCode: string;
+  zip_code: string;
 }
 
 const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
@@ -28,27 +29,27 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
-  // API submission function
+  // Submit waitlist data to Supabase
   const submitWaitlistData = async (data: WaitlistFormData) => {
-    // For demonstration, we'll log the data to console
-    console.log("Submitting waitlist data:", data);
+    console.log("Submitting waitlist data to Supabase:", data);
     
-    // Simulate API call - in a real app, replace with actual API endpoint
-    const response = await fetch('https://api.neighborhoodapp.example/api/waitlist', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    // Insert data into the waitlist table
+    const { data: result, error } = await supabase
+      .from('waitlist')
+      .insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        zip_code: data.zip_code
+      })
+      .select();
     
-    // For demo purposes, we'll just simulate success
-    // In production, you would check response status and handle errors
-    if (!response.ok) {
-      throw new Error('Failed to join waitlist');
+    if (error) {
+      console.error("Error submitting to Supabase:", error);
+      throw new Error(error.message || 'Failed to join waitlist');
     }
     
-    return await response.json();
+    return result;
   };
 
   // Use React Query's useMutation hook to handle the submission
@@ -66,7 +67,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
       console.error("Error submitting waitlist data:", error);
       toast({
         title: "Something went wrong",
-        description: "We couldn't add you to the waitlist. Please try again.",
+        description: `We couldn't add you to the waitlist: ${error instanceof Error ? error.message : 'Please try again.'}`,
         variant: "destructive",
       });
     },
@@ -80,7 +81,7 @@ const WaitlistOverlay = ({ onClose }: WaitlistOverlayProps) => {
       name,
       email,
       phone,
-      zipCode
+      zip_code: zipCode
     };
     
     // Submit the data using the mutation
