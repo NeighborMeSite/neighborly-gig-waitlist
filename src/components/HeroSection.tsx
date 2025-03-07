@@ -22,45 +22,35 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-gradient-to-br from-neighborly-50 via-neighborly-100 to-neighborly-200/50 -z-10"></div>
       
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row md:items-start md:gap-8">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between">
           {/* Form side */}
           {showWaitlist && (
-            <div className="w-full md:w-1/2 md:max-w-md mb-8 md:mb-0">
-              {/* Form */}
+            <div className="w-full md:w-5/12 lg:w-4/12 mb-8 md:mb-0">
               <FormSection 
                 neighborCount={neighborCount} 
                 setNeighborCount={setNeighborCount} 
               />
-              
-              {/* Mobile image - below form */}
-              <div className="mt-6 mb-8 md:hidden overflow-hidden rounded-xl">
-                <img 
-                  src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
-                  alt="NeighborMe community" 
-                  className="w-full h-auto shadow-md border border-neighborly-100 neighborhood-image"
-                />
-              </div>
             </div>
           )}
           
           {/* Content side */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-6/12 lg:w-7/12">
             <HeroContent neighborCount={neighborCount} />
             
-            {/* Desktop image - positioned to the right of the content */}
-            <div className="hidden md:block mt-8 rounded-xl overflow-hidden">
+            {/* Hero image - visible on all screen sizes with proper scaling */}
+            <div className="mt-8 rounded-xl overflow-hidden">
               <img 
                 src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
                 alt="NeighborMe community illustration" 
-                className="w-full md:max-w-xl h-auto neighborhood-image"
+                className="w-full h-auto object-contain max-h-[500px] neighborhood-image"
               />
             </div>
           </div>
         </div>
       </div>
       
-      {/* Background image for visual interest - large screens only */}
-      <div className="absolute right-0 bottom-0 w-1/4 h-1/3 hidden xl:block opacity-30 pointer-events-none">
+      {/* Background decorative elements - only on large screens */}
+      <div className="absolute -bottom-16 -right-16 w-64 h-64 hidden xl:block opacity-10 pointer-events-none">
         <img 
           src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
           alt="" 
