@@ -13,6 +13,10 @@ const faqs = [
     answer: 'NeighborMe is a local service platform that connects you with trusted neighbors who can help with everyday tasks and services, from lawn care to handyman work, pet sitting to tech support.'
   },
   {
+    question: 'How is NeighborMe different from other service platforms?',
+    answer: 'Unlike traditional service directories, NeighborMe uses a proprietary AI architecture specifically designed to create meaningful connections between neighbors based on skills, availability, and community trust. Our technology understands the unique needs of local communities and facilitates more personal, reliable service connections while maintaining the highest standards of privacy and security.'
+  },
+  {
     question: 'How does NeighborMe verify service providers?',
     answer: 'All service providers undergo a verification process that includes ID verification, background checks, and community validation through reviews and ratings from neighbors in your area.'
   },
