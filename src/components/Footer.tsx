@@ -14,10 +14,20 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!message.trim()) {
+      toast({
+        title: "Message required",
+        description: "Please enter a message before sending.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     setIsSending(true);
     
     try {
-      const { error } = await supabase.functions.invoke('send-message', {
+      const { data, error } = await supabase.functions.invoke('send-message', {
         body: { message }
       });
 
