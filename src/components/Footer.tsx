@@ -1,4 +1,3 @@
-
 import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -6,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -130,12 +130,12 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-neighborly-100 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <div className="mb-4 md:mb-0">
-            &copy; {currentYear} NeighborMe. All rights reserved.
+            &copy; {new Date().getFullYear()} NeighborMe. All rights reserved.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-neighborly-700 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-neighborly-700 transition-colors">Terms</a>
-            <a href="#" className="hover:text-neighborly-700 transition-colors">Cookies</a>
+            <Link to="/privacy" className="hover:text-neighborly-700 transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-neighborly-700 transition-colors">Terms</Link>
+            <Link to="/cookies" className="hover:text-neighborly-700 transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
