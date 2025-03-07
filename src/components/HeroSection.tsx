@@ -23,7 +23,7 @@ const HeroSection = ({
       
       <div className="container mx-auto px-4">
         {/* Main content area */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Left column: Hero content */}
           <div className="w-full md:w-1/2 order-2 md:order-1">
             <HeroContent neighborCount={neighborCount} />
@@ -32,17 +32,17 @@ const HeroSection = ({
           {/* Right column: Form and image */}
           <div className="w-full md:w-1/2 order-1 md:order-2">
             {showWaitlist && (
-              <div className="flex flex-col md:flex-row items-center justify-center h-full gap-8">
-                {/* Waitlist form - on the left */}
-                <div className="w-full md:w-1/2 h-full flex items-center">
+              <div className="md:flex md:items-center md:space-x-6 lg:space-x-8">
+                {/* Waitlist form */}
+                <div className="w-full mb-8 md:mb-0 md:w-1/2">
                   <FormSection 
                     neighborCount={neighborCount} 
                     setNeighborCount={setNeighborCount} 
                   />
                 </div>
                 
-                {/* Neighborhood image - on the right */}
-                <div className="w-full md:w-1/2 h-full flex items-center justify-center">
+                {/* Neighborhood image */}
+                <div className="hidden md:block md:w-1/2">
                   <img 
                     src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                     alt="NeighborMe community illustration" 
