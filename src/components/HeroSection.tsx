@@ -23,15 +23,10 @@ const HeroSection = ({
       
       <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-0">
-          {/* Content side */}
-          <div className="mb-6">
-            <HeroContent neighborCount={neighborCount} />
-          </div>
-          
-          {/* Form and illustration */}
+          {/* Form first - moved to top */}
           {showWaitlist && (
-            <div className="w-full max-w-md mx-auto">
-              {/* Form first */}
+            <div className="w-full max-w-md mx-auto mb-8">
+              {/* Form */}
               <div className="w-full mb-8">
                 <FormSection 
                   neighborCount={neighborCount} 
@@ -51,6 +46,11 @@ const HeroSection = ({
               </div>
             </div>
           )}
+          
+          {/* Content side - moved below the form */}
+          <div>
+            <HeroContent neighborCount={neighborCount} />
+          </div>
         </div>
       </div>
     </section>
