@@ -17,9 +17,11 @@ const Privacy = () => {
         <div className="max-w-3xl mx-auto">
           <div className="mb-6 flex items-center">
             <Link to="/">
-              <Button variant="ghost" className="p-0 hover:bg-transparent">
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Back to Home
+              <Button variant="ghost" className="group p-0 hover:bg-transparent">
+                <ArrowLeft className="h-5 w-5 mr-2 text-neighborly-600 group-hover:text-neighborly-700 transition-colors" />
+                <span className="font-medium text-neighborly-600 group-hover:text-neighborly-700 transition-colors">
+                  Back to NeighborMe
+                </span>
               </Button>
             </Link>
           </div>
