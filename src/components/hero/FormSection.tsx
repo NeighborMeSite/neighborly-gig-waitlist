@@ -36,7 +36,7 @@ const FormSection = ({ neighborCount, setNeighborCount }: FormSectionProps) => {
 
   return (
     <div className="w-full">
-      <div className="bg-white rounded-xl shadow-lg p-2 sm:p-3 border border-gray-100 w-full">
+      <div className="card-white p-4 sm:p-6 w-full">
         <WaitlistForm setNeighborCount={setNeighborCount} />
       </div>
     </div>

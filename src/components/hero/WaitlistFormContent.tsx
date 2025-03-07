@@ -64,7 +64,7 @@ const WaitlistFormContent = () => {
         
         <Button
           type="submit"
-          className="w-full bg-neighborly-600 hover:bg-neighborly-700 text-white transition-all duration-300"
+          className="w-full bg-neighborly-600 hover:bg-neighborly-700 text-white transition-all duration-300 font-medium"
           disabled={loading}
         >
           {loading ? "Joining..." : "Join Waitlist"}

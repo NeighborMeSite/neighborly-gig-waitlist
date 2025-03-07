@@ -3,11 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 142 76% 97%;
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
@@ -76,6 +76,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', 'Inter', sans-serif;
   }
 }
 
@@ -118,4 +119,12 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.modern-navbar {
+  @apply bg-white/80 backdrop-blur-md shadow-sm border-b border-neighborly-100;
+}
+
+.card-white {
+  @apply bg-white rounded-xl shadow-md border border-neighborly-100;
 }
