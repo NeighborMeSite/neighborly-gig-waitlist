@@ -3,9 +3,13 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
 const Cookies = () => {
+  const handleOpenWaitlist = () => {
+    window.location.href = "/#waitlist";
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar onOpenWaitlist={handleOpenWaitlist} />
       <main className="flex-1 container mx-auto py-12 px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-6 text-neighborly-800">Cookie Policy</h1>
