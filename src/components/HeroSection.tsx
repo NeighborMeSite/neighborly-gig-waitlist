@@ -35,7 +35,7 @@ const HeroSection = ({
               <div className="w-full mb-6 overflow-hidden rounded-xl shadow-lg">
                 <div className="h-80 sm:h-96 w-full">
                   <img 
-                    src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
+                    src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
                     alt="Neighborhood illustration" 
                     className="w-full h-full object-cover"
                   />
