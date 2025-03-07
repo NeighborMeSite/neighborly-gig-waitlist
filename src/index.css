@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -89,7 +90,7 @@
   }
   
   .neighborhood-bg {
-    background-image: url('/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png');
+    background-image: url('/lovable-uploads/c3c5f3ec-3319-41a4-9a60-fa5ec79095f3.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -112,19 +113,19 @@
   
   /* Enhanced image styling */
   .neighborhood-image {
-    box-shadow: 0 6px 16px -4px rgba(58, 125, 25, 0.12);
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 24px -6px rgba(58, 125, 25, 0.2);
+    transition: all 0.4s ease-in-out;
     border: 1px solid rgba(58, 125, 25, 0.08);
     border-radius: 12px;
-    max-height: 400px;
     width: 100%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
+    max-height: 550px;
   }
   
   .neighborhood-image:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px -3px rgba(58, 125, 25, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px -8px rgba(58, 125, 25, 0.25);
   }
   
   .image-shadow {
