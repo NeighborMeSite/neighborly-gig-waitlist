@@ -17,14 +17,14 @@ const HeroSection = ({
   setNeighborCount 
 }: HeroSectionProps) => {
   return (
-    <section className="px-2 sm:px-4 relative mt-0" id="home">
+    <section className="px-2 sm:px-4 relative mt-2" id="home">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-neighborly-50 via-neighborly-100 to-neighborly-200/50 -z-10"></div>
       
       <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-0">
           {/* Content side - Adding compact height */}
-          <div className="mt-0 max-h-40 overflow-hidden">
+          <div className="mt-4 max-h-40 overflow-hidden">
             <HeroContent neighborCount={neighborCount} />
           </div>
           

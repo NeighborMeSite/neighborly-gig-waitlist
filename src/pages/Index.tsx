@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-neighborly-50 to-neighborly-100">
       <Navbar onOpenWaitlist={scrollToWaitlist} />
-      <div className="bg-neighborly-200 py-2 text-center mt-0 mb-0 px-2 shadow-sm">
+      <div className="pt-16 bg-neighborly-200 py-4 text-center mt-0 mb-0 px-4 shadow-sm">
         <h2 className="text-neighborly-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-poppins">Welcome to NeighborMe</h2>
         <p className="text-neighborly-700 mt-1 italic text-sm md:text-base px-1">Building stronger communities, one neighbor at a time</p>
         <p className="text-sm md:text-base lg:text-lg pb-2 mt-1 text-neighborly-700 font-medium">
