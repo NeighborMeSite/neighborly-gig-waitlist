@@ -6,6 +6,17 @@ import { useToast } from '@/hooks/use-toast';
 const SuccessMessage = () => {
   const { toast } = useToast();
   
+  const handleShareClick = () => {
+    // Copy the website URL to clipboard
+    navigator.clipboard.writeText('https://neighborme.io');
+    
+    toast({
+      title: "Share link copied!",
+      description: "Share this link with friends to move up the waitlist.",
+      variant: "default",
+    });
+  };
+  
   return (
     <div className="text-center py-6">
       <div className="mx-auto w-14 h-14 bg-neighborly-100 rounded-full flex items-center justify-center mb-4">
@@ -28,13 +39,7 @@ const SuccessMessage = () => {
                 variant="outline"
                 size="sm"
                 className="border-neighborly-200 hover:bg-neighborly-100 transition-all w-full"
-                onClick={() => {
-                  toast({
-                    title: "Share link copied!",
-                    description: "Share this link with friends to move up the waitlist.",
-                    variant: "default",
-                  });
-                }}
+                onClick={handleShareClick}
               >
                 Share your invite link
               </Button>
