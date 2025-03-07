@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: 'How is NeighborMe different from other service platforms?',
-    answer: 'Unlike traditional service directories, NeighborMe uses a proprietary AI architecture specifically designed to create meaningful connections between neighbors based on skills, availability, and community trust. Our technology understands the unique needs of local communities and facilitates more personal, reliable service connections while maintaining the highest standards of privacy and security.'
+    answer: 'Unlike traditional service directories, NeighborMe builds genuine community connections that go beyond transactional relationships. Our unique approach prioritizes trust, proximity, and community values, creating a more personal experience than what you\'d find on big tech platforms. We\'ve designed our technology to truly understand what makes neighborhoods special, while keeping your information secure and private.'
   },
   {
     question: 'How does NeighborMe verify service providers?',
