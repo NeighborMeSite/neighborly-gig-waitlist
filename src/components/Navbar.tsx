@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { MapPin, Sparkles } from 'lucide-react';
+import { MapPin, Sparkles, Menu, X } from 'lucide-react';
 import { AnimatedContainer } from './AnimatedElements';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ interface NavbarProps {
 
 const Navbar = ({ onOpenWaitlist, neighborCount }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,49 +32,23 @@ const Navbar = ({ onOpenWaitlist, neighborCount }: NavbarProps) => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-          {/* Logo and Welcome Text Section */}
-          <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between">
+          {/* Logo and Mobile Menu Toggle */}
+          <div className="flex items-center">
             <Link to="/" className="flex items-center gap-2 group">
               <MapPin className="h-7 w-7 text-white" />
               <span className="font-bold text-xl tracking-tight text-white group-hover:text-neighborly-100 transition-colors">
                 NeighborMe
               </span>
             </Link>
-            
-            {/* Welcome message - visible on mobile and desktop */}
-            <div className="md:ml-6 text-white">
-              <h2 className="text-base md:text-lg font-semibold leading-tight">
-                Welcome to NeighborMe
-              </h2>
-              <p className="text-xs md:text-sm italic text-white/90">
-                Building stronger communities, one neighbor at a time
-              </p>
-            </div>
-            
-            {/* Join Waitlist button - visible on mobile only */}
-            <Button
-              variant="default"
-              size="sm"
-              className="md:hidden bg-white text-[#3a7d19] hover:bg-neighborly-100 transition-all duration-300 font-medium"
-              onClick={onOpenWaitlist}
-            >
-              <Sparkles className="h-3 w-3 mr-1" />
-              Join
-            </Button>
           </div>
           
-          {/* Navigation and Waitlist Count Section */}
-          <div className="hidden md:flex items-center justify-between mt-2 md:mt-0">
-            <ul className="flex items-center space-x-6 mr-6">
+          {/* Navigation and Waitlist Count - Desktop */}
+          <div className="hidden md:flex items-center space-x-6">
+            <ul className="flex items-center space-x-6">
               <li>
                 <a href="#features" className="text-sm font-medium hover:text-neighborly-100 transition-colors text-white">
                   Features
-                </a>
-              </li>
-              <li>
-                <a href="#how-it-works" className="text-sm font-medium hover:text-neighborly-100 transition-colors text-white">
-                  How It Works
                 </a>
               </li>
               <li>
@@ -98,7 +73,62 @@ const Navbar = ({ onOpenWaitlist, neighborCount }: NavbarProps) => {
               </Button>
             </div>
           </div>
+          
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center gap-3">
+            <p className="text-xs text-white font-medium">
+              <span className="font-bold text-white">{neighborCount}</span> neighbors joined
+            </p>
+            
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-white"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          </div>
         </div>
+        
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 animate-fade-in">
+            <ul className="flex flex-col space-y-4">
+              <li>
+                <a 
+                  href="#features" 
+                  className="text-white block py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#faq" 
+                  className="text-white block py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <Button
+                  variant="default"
+                  className="w-full bg-white text-[#3a7d19] hover:bg-neighborly-100 transition-all duration-300 font-medium"
+                  onClick={() => {
+                    onOpenWaitlist();
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Join Waitlist
+                </Button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </header>
   );
