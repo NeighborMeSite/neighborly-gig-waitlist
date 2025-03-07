@@ -125,16 +125,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div>
-            <div>
-              <h3 className="font-medium mb-4">Company</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-neighborly-700 transition-colors">Privacy</a></li>
-              </ul>
-            </div>
-          </div>
+          {/* Removed the Company links section here */}
         </div>
         
         <div className="mt-12 pt-8 border-t border-neighborly-100 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
