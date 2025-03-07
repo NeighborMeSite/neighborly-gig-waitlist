@@ -8,23 +8,47 @@ const corsHeaders = {
 };
 
 interface MessageRequest {
+  name?: string;
+  email?: string;
   message: string;
 }
 
-const sendEmail = async (message: string) => {
+const sendEmail = async (name: string, email: string, message: string) => {
   // Initialize Resend with API key
   const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
   
   try {
-    const data = await resend.emails.send({
+    // Send notification to admin
+    const adminEmail = await resend.emails.send({
       from: "NeighborMe <onboarding@resend.dev>",
       to: "ahourmand90@gmail.com", 
       subject: "New message from NeighborMe website",
-      html: `<p>${message}</p>`,
+      html: `
+        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
     });
     
-    console.log("Email successfully sent:", data);
-    return { success: true, data };
+    // If user provided email, send confirmation to them
+    let userConfirmation = null;
+    if (email) {
+      userConfirmation = await resend.emails.send({
+        from: "NeighborMe <onboarding@resend.dev>",
+        to: email,
+        subject: "We've received your message - NeighborMe",
+        html: `
+          <h1>Thank you for contacting us${name ? ', ' + name : ''}!</h1>
+          <p>We've received your message and will get back to you as soon as possible.</p>
+          <p>For your records, here's what you sent us:</p>
+          <blockquote>${message}</blockquote>
+          <p>Best regards,<br>The NeighborMe Team</p>
+        `,
+      });
+    }
+    
+    console.log("Emails sent successfully:", { admin: adminEmail, user: userConfirmation });
+    return { success: true, data: { admin: adminEmail, user: userConfirmation } };
   } catch (error) {
     console.error("Error sending email:", error);
     throw error;
@@ -39,7 +63,7 @@ serve(async (req) => {
 
   try {
     // Parse the request body
-    const { message } = (await req.json()) as MessageRequest;
+    const { name = '', email = '', message } = (await req.json()) as MessageRequest;
 
     if (!message) {
       return new Response(
@@ -52,7 +76,7 @@ serve(async (req) => {
     }
 
     // Send the email
-    const result = await sendEmail(message);
+    const result = await sendEmail(name, email, message);
 
     // Return success response
     return new Response(
@@ -62,7 +86,7 @@ serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
       }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error processing message:', error);
     
     // Return error response

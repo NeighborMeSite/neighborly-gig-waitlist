@@ -2,12 +2,15 @@
 import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSending, setIsSending] = useState(false);
   const { toast } = useToast();
@@ -23,12 +26,21 @@ const Footer = () => {
       });
       return;
     }
+
+    if (!email.trim()) {
+      toast({
+        title: "Email required",
+        description: "Please provide your email so we can respond to you.",
+        variant: "destructive"
+      });
+      return;
+    }
     
     setIsSending(true);
     
     try {
       const { data, error } = await supabase.functions.invoke('send-message', {
-        body: { message }
+        body: { name, email, message }
       });
 
       if (error) {
@@ -39,6 +51,8 @@ const Footer = () => {
         title: "Message sent",
         description: "Thanks for reaching out! We'll get back to you soon.",
       });
+      setName('');
+      setEmail('');
       setMessage('');
     } catch (error) {
       console.error('Error sending message:', error);
@@ -67,15 +81,38 @@ const Footer = () => {
             {/* Message Form */}
             <div className="mt-6 max-w-md">
               <h3 className="font-medium mb-3 text-neighborly-800">Send us a message</h3>
-              <form onSubmit={handleSubmit}>
-                <Textarea 
-                  placeholder="Questions or feedback? Let us know!" 
-                  className="resize-none bg-white/70 border-neighborly-100 focus:border-neighborly-300 mb-3"
-                  rows={4}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                />
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div>
+                  <Input 
+                    placeholder="Your name" 
+                    className="bg-white/70 border-neighborly-100 focus:border-neighborly-300"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    aria-label="Your name"
+                  />
+                </div>
+                <div>
+                  <Input 
+                    type="email" 
+                    placeholder="Your email" 
+                    className="bg-white/70 border-neighborly-100 focus:border-neighborly-300"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    aria-label="Your email"
+                  />
+                </div>
+                <div>
+                  <Textarea 
+                    placeholder="Questions or feedback? Let us know!" 
+                    className="resize-none bg-white/70 border-neighborly-100 focus:border-neighborly-300"
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                    aria-label="Your message"
+                  />
+                </div>
                 <Button 
                   type="submit" 
                   className="w-full bg-neighborly-600 hover:bg-neighborly-700 text-white"
