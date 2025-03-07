@@ -29,7 +29,7 @@ const HeroSection = ({
             {showWaitlist && (
               <div className="image-container rounded-xl overflow-hidden shadow-xl border-2 border-neighborly-100">
                 <img 
-                  src="/lovable-uploads/918c3133-c3de-473d-8ea2-6a1b1891138e.png" 
+                  src="/lovable-uploads/aa86a4c3-ca64-40f8-9277-dc573d9d43e0.png" 
                   alt="NeighborMe community illustration" 
                   className="w-full h-auto"
                 />
