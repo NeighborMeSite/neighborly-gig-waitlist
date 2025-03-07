@@ -62,21 +62,6 @@ const FaqSection = () => {
             ))}
           </Accordion>
         </RevealOnScroll>
-
-        <RevealOnScroll animation="slide-up" className="mt-10 text-center">
-          <p className="text-muted-foreground mb-4">
-            Still have questions?
-          </p>
-          <a 
-            href="mailto:hello@neighborme.com" 
-            className="inline-flex items-center text-neighborly-600 hover:text-neighborly-700 font-medium"
-          >
-            Contact Us
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </RevealOnScroll>
       </div>
     </section>
   );
