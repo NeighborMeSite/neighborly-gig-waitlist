@@ -33,7 +33,7 @@ const HeroContent = ({ neighborCount }: HeroContentProps) => {
       <AnimatedContainer animation="slide-up" delay={700}>
         <div className="flex items-center space-x-3 text-neighborly-600">
           <Sparkles className="h-5 w-5" />
-          <p className="font-medium">Powered by AI to match you with perfect gig opportunities</p>
+          <p className="font-medium">Powered by innovative technology that understands your community</p>
         </div>
       </AnimatedContainer>
       
@@ -53,7 +53,7 @@ const HeroContent = ({ neighborCount }: HeroContentProps) => {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-4 w-4 text-neighborly-600" />
-            <span>AI-Powered Matching</span>
+            <span>Smart Matching</span>
           </div>
         </div>
       </AnimatedContainer>
