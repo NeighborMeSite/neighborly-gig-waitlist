@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-neighborly-50 to-neighborly-100">
       <Navbar onOpenWaitlist={scrollToWaitlist} neighborCount={neighborCount} />
-      <main className="pt-32 md:pt-36">
+      <main className="pt-24 md:pt-28">
         <HeroSection 
           showWaitlist={showWaitlist} 
           setShowWaitlist={setShowWaitlist} 

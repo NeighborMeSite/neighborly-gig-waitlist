@@ -1,19 +1,21 @@
-
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Terms = () => {
-  const handleOpenWaitlist = () => {
-    window.location.href = "/#waitlist";
+  const navigate = useNavigate();
+  
+  const handleGoBack = () => {
+    navigate('/');
   };
-
+  
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar onOpenWaitlist={handleOpenWaitlist} />
-      <main className="flex-1 container mx-auto py-12 px-4">
+    <>
+      <Navbar onOpenWaitlist={handleGoBack} neighborCount={0} />
+      <div className="container mx-auto px-4 py-24 md:py-32">
         <div className="max-w-3xl mx-auto">
           <div className="mb-6 flex items-center">
             <Link to="/">
@@ -94,9 +96,9 @@ const Terms = () => {
             </section>
           </div>
         </div>
-      </main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
