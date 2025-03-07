@@ -1,6 +1,9 @@
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Privacy = () => {
   const handleOpenWaitlist = () => {
@@ -12,6 +15,14 @@ const Privacy = () => {
       <Navbar onOpenWaitlist={handleOpenWaitlist} />
       <main className="flex-1 container mx-auto py-12 px-4">
         <div className="max-w-3xl mx-auto">
+          <div className="mb-6 flex items-center">
+            <Link to="/">
+              <Button variant="ghost" className="p-0 hover:bg-transparent">
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
           <h1 className="text-3xl font-bold mb-6 text-neighborly-800">Privacy Policy</h1>
           
           <div className="prose prose-green max-w-none">
