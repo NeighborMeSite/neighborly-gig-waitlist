@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: 'How is NeighborMe different from other service platforms?',
-    answer: 'Unlike traditional service directories, NeighborMe builds genuine community connections that go beyond transactional relationships. Our unique approach prioritizes trust, proximity, and community values, creating a more personal experience than what you\'d find on big tech platforms. We\'ve designed our technology to truly understand what makes neighborhoods special, while keeping your information secure and private.'
+    answer: 'Unlike traditional service directories, NeighborMe builds genuine community connections that go beyond transactional relationships. Our unique approach is powered by our proprietary AI model that understands neighborhood dynamics in ways other platforms can\'t. We prioritize trust, proximity, and community values, creating a more personal experience than what you\'d find on big tech platforms, while keeping your information secure and private.'
   },
   {
     question: 'How does NeighborMe verify service providers?',
