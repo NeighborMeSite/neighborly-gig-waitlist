@@ -32,9 +32,9 @@ const HeroSection = ({
           {/* Right column: Form and image */}
           <div className="w-full md:w-1/2 order-1 md:order-2">
             {showWaitlist && (
-              <div className="flex flex-col lg:flex-row items-start gap-6">
+              <div className="flex flex-col items-center lg:flex-row lg:items-stretch lg:justify-between gap-6">
                 {/* Waitlist form */}
-                <div className="w-full lg:w-3/5">
+                <div className="w-full lg:w-1/2 self-center">
                   <FormSection 
                     neighborCount={neighborCount} 
                     setNeighborCount={setNeighborCount} 
@@ -42,9 +42,9 @@ const HeroSection = ({
                 </div>
                 
                 {/* Neighborhood image */}
-                <div className="w-full lg:w-2/5 mt-6 lg:mt-0 flex items-center justify-center">
+                <div className="w-full lg:w-1/2 flex items-center justify-center">
                   <img 
-                    src="/lovable-uploads/b1d528ca-72e2-4d4b-b5d7-fa58fcce448b.png" 
+                    src="/lovable-uploads/76dcea54-544b-45f6-9c46-3e176f8e1c57.png" 
                     alt="NeighborMe community illustration" 
                     className="w-full h-auto object-contain neighborhood-image"
                   />
@@ -58,7 +58,7 @@ const HeroSection = ({
       {/* Background decorative elements - only on large screens */}
       <div className="absolute -bottom-16 -right-16 w-64 h-64 hidden xl:block opacity-10 pointer-events-none">
         <img 
-          src="/lovable-uploads/b1d528ca-72e2-4d4b-b5d7-fa58fcce448b.png" 
+          src="/lovable-uploads/76dcea54-544b-45f6-9c46-3e176f8e1c57.png" 
           alt="" 
           className="w-full h-full object-contain"
         />

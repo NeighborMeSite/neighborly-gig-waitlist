@@ -90,7 +90,7 @@
   }
   
   .neighborhood-bg {
-    background-image: url('/lovable-uploads/b1d528ca-72e2-4d4b-b5d7-fa58fcce448b.png');
+    background-image: url('/lovable-uploads/76dcea54-544b-45f6-9c46-3e176f8e1c57.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -117,9 +117,10 @@
     transition: all 0.3s ease-in-out;
     border: 1px solid rgba(58, 125, 25, 0.08);
     border-radius: 12px;
-    max-height: 320px;
+    max-height: 380px;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
   }
   
   .neighborhood-image:hover {
