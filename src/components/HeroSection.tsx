@@ -23,8 +23,8 @@ const HeroSection = ({
       
       <div className="container mx-auto px-4">
         {/* Main content area */}
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16">
-          {/* Left column: Hero content on desktop, below form on mobile */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+          {/* Left column: Hero content */}
           <div className="w-full md:w-1/2 order-2 md:order-1">
             <HeroContent neighborCount={neighborCount} />
           </div>
@@ -32,21 +32,21 @@ const HeroSection = ({
           {/* Right column: Form and image */}
           <div className="w-full md:w-1/2 order-1 md:order-2">
             {showWaitlist && (
-              <div className="flex flex-col items-center lg:flex-row lg:items-stretch lg:justify-between gap-6">
-                {/* Waitlist form */}
-                <div className="w-full lg:w-1/2 self-center">
+              <div className="flex flex-col md:flex-row items-center justify-center h-full gap-8">
+                {/* Waitlist form - on the left */}
+                <div className="w-full md:w-1/2 h-full flex items-center">
                   <FormSection 
                     neighborCount={neighborCount} 
                     setNeighborCount={setNeighborCount} 
                   />
                 </div>
                 
-                {/* Neighborhood image */}
-                <div className="w-full lg:w-1/2 flex items-center justify-center">
+                {/* Neighborhood image - on the right */}
+                <div className="w-full md:w-1/2 h-full flex items-center justify-center">
                   <img 
-                    src="/lovable-uploads/76dcea54-544b-45f6-9c46-3e176f8e1c57.png" 
+                    src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
                     alt="NeighborMe community illustration" 
-                    className="w-full h-auto object-contain neighborhood-image"
+                    className="w-full h-auto max-h-[400px] object-contain image-shadow rounded-lg"
                   />
                 </div>
               </div>
@@ -58,7 +58,7 @@ const HeroSection = ({
       {/* Background decorative elements - only on large screens */}
       <div className="absolute -bottom-16 -right-16 w-64 h-64 hidden xl:block opacity-10 pointer-events-none">
         <img 
-          src="/lovable-uploads/76dcea54-544b-45f6-9c46-3e176f8e1c57.png" 
+          src="/lovable-uploads/372058c7-2516-4aeb-8e9a-da5efdefe917.png" 
           alt="" 
           className="w-full h-full object-contain"
         />
