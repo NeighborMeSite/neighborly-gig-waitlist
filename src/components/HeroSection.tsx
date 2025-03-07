@@ -22,47 +22,45 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-gradient-to-br from-neighborly-50 via-neighborly-100 to-neighborly-200/50 -z-10"></div>
       
       <div className="container mx-auto">
-        <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between">
-          {/* Content side with image integration */}
-          <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <HeroContent neighborCount={neighborCount} />
-            
-            {/* Strategic image placement - visible on all screen sizes */}
-            <div className="mt-8 mb-4 md:hidden">
-              <img 
-                src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
-                alt="NeighborMe community illustration" 
-                className="w-full h-auto max-h-[300px] rounded-xl object-cover shadow-md border border-neighborly-100"
-              />
-            </div>
-          </div>
-          
+        <div className="flex flex-col md:flex-row md:items-start md:gap-8">
           {/* Form side */}
           {showWaitlist && (
-            <div className="w-full md:w-1/2 max-w-md">
+            <div className="w-full md:w-1/2 md:max-w-md mb-8 md:mb-0">
               {/* Form */}
-              <div className="w-full mb-8">
-                <FormSection 
-                  neighborCount={neighborCount} 
-                  setNeighborCount={setNeighborCount} 
-                />
-              </div>
+              <FormSection 
+                neighborCount={neighborCount} 
+                setNeighborCount={setNeighborCount} 
+              />
               
-              {/* Image on desktop - positioned to the right of the content */}
-              <div className="hidden md:block w-full overflow-hidden rounded-xl shadow-lg">
+              {/* Mobile image - below form */}
+              <div className="mt-6 mb-8 md:hidden overflow-hidden rounded-xl">
                 <img 
                   src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
-                  alt="NeighborMe community illustration" 
-                  className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+                  alt="NeighborMe community" 
+                  className="w-full h-auto shadow-md border border-neighborly-100 neighborhood-image"
                 />
               </div>
             </div>
           )}
+          
+          {/* Content side */}
+          <div className="w-full md:w-1/2">
+            <HeroContent neighborCount={neighborCount} />
+            
+            {/* Desktop image - positioned to the right of the content */}
+            <div className="hidden md:block mt-8 rounded-xl overflow-hidden">
+              <img 
+                src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
+                alt="NeighborMe community illustration" 
+                className="w-full md:max-w-xl h-auto neighborhood-image"
+              />
+            </div>
+          </div>
         </div>
       </div>
       
       {/* Background image for visual interest - large screens only */}
-      <div className="absolute right-0 bottom-0 w-1/3 h-1/2 hidden xl:block opacity-20 pointer-events-none">
+      <div className="absolute right-0 bottom-0 w-1/4 h-1/3 hidden xl:block opacity-30 pointer-events-none">
         <img 
           src="/lovable-uploads/be5815e0-e0a5-472c-8f73-5cf2b31004ee.png" 
           alt="" 
