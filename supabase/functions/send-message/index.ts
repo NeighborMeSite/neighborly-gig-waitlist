@@ -24,7 +24,7 @@ const sendEmail = async (message: string) => {
     });
     
     console.log("Email successfully sent:", data);
-    return { success: true };
+    return { success: true, data };
   } catch (error) {
     console.error("Error sending email:", error);
     throw error;
@@ -52,11 +52,11 @@ serve(async (req) => {
     }
 
     // Send the email
-    await sendEmail(message);
+    const result = await sendEmail(message);
 
     // Return success response
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify(result),
       { 
         status: 200, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
@@ -67,7 +67,7 @@ serve(async (req) => {
     
     // Return error response
     return new Response(
-      JSON.stringify({ error: 'Failed to process message' }),
+      JSON.stringify({ error: 'Failed to process message', details: error.message }),
       { 
         status: 500, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
